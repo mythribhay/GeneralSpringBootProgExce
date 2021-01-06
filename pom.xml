@@ -24,12 +24,12 @@
 		<java.version>1.8</java.version>
 	</properties>
 	
-		<!--<distributionManagement>
+		<distributionManagement>
   <snapshotRepository>
     <id>nexus</id>
-    <url>http://3.139.69.24:8081/nexus/content/repositories/snapshots/</url>
+    <url>http://52.14.217.83:8081/nexus/content/repositories/snapshots/</url>
   </snapshotRepository>
-</distributionManagement>-->
+</distributionManagement>
 
 	<dependencies>
 		<dependency>
