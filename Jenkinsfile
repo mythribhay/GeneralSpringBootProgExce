@@ -8,7 +8,7 @@ node('master')
 
              { 
 
-                  git 'https://github.com/mythribhay/Inglibrary.git' 
+                  git 'https://github.com/mythribhat/GeneralSpringBootProgExce.git' 
 
               } 
 
