@@ -52,30 +52,6 @@ node('master')
 
          } 
 
-    
-
-      stage('Deploy') 
-
-        { 
-
-             sh '/opt/maven/bin/mvn clean deploy ' 
-
-         } 
-
- 
-
-   stage('Release') 
-
-        { 
-
-             sh 'export JENKINS_NODE_COOKIE=dontKillMe ;nohup java -Dspring.profiles.active=dev -jar $WORKSPACE/target/*.jar &' 
-
-         }
-    
-      post {
-        always {
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
-        }
-    }
+   
 
 } 
