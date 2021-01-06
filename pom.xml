@@ -25,11 +25,13 @@
 	</properties>
 	
 		<distributionManagement>
-  <snapshotRepository>
-    <id>nexus</id>
-    <url>http://3.139.69.24:8081/nexus/content/repositories/snapshots/</url>
-  </snapshotRepository>
-</distributionManagement>
+			
+			<distributionManagement>
+       <repository>
+         <id>nexus</id>
+         <url>http://3.139.69.24:8081/nexus/content/repositories/snapshots/</url>
+       </repository>
+ </distributionManagement>
 
 	<dependencies>
 		<dependency>
