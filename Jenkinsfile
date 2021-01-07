@@ -62,11 +62,27 @@ node('master')
 
          } 
     
-    post {
-        always {
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+ stages {
+        stage('Send Email') {
+            steps {
+            node ('master'){
+                echo 'Send Email'
+            }
+        }
         }
     }
+    post { 
+        always { 
+            echo 'I will always say Hello!'
+        }
+        aborted {
+            echo 'I was aborted'
+        }
+        failure {
+            mail to: 'aa@bb.cc',
+            subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+            body: "Something is wrong with ${env.BUILD_URL}"
+        }
   
 
 } 
