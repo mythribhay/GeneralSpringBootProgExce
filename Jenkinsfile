@@ -68,3 +68,9 @@ node('master')
 stage('Deploy approval'){
     input "Deploy to prod?"
 }
+
+post {
+        always {
+            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+        }
+    }
