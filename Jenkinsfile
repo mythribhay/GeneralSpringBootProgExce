@@ -62,7 +62,7 @@ node('master')
 { 
     
 
-      stage('SIT – Deployment Approval') 
+      stage('SIT – Deployment ') 
 
         { 
 
