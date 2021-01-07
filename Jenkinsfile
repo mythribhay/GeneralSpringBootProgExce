@@ -83,15 +83,5 @@ node('master')
         recipientProviders: [[$class: 'CulpritsRecipientProvider']]
     }
 }
-stage('Send email last') {
-pipeline {
-    agent any
-    
-    post {
-        always {
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
-        }
-    }
-}
-}
+
 
