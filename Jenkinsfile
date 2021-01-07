@@ -58,24 +58,12 @@ node('master')
 
         { 
 
-             sh '/opt/maven/bin/mvn clean deploy -DaltDeploymentRepository=internal.repo::default::http://admin:admin123@52.14.217.83:8081/nexus/content/repositories/snapshots/' 
+             sh '/opt/maven/bin/mvn clean deploy -DaltDeploymentRepository=internal.repo::default::http://admin:admin123@18.222.187.3:8081/nexus/content/repositories/snapshots/' 
 
-         } 
-
- 
-
-   stage('SIT Deployment') 
-
-        { 
-
-             sh 'export JENKINS_NODE_COOKIE=dontKillMe ;nohup java -Dspring.profiles.active=dev -jar $WORKSPACE/target/*.jar &' 
-
-         }
-    
-      post {
-        always {
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
-        }
-    }
+         }     
+  
 
 } 
+
+stage('Deploy approval'){
+    input "Deploy to prod?"
