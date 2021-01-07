@@ -53,15 +53,14 @@ node('master')
          } 
 }
 
-stage('Deploy approval'){
-    input "Deploy to prod?"
-}
+stage('Deploy approval') 
+        {
+                          input "Deploy to prod?"
+        }
 
 node('master') 
 
 { 
-    
-
       stage('SIT – Deployment ') 
 
         { 
@@ -70,7 +69,9 @@ node('master')
 
          } 
     
- stage('Send email') {
+ stage('Send email') 
+    
+   {
     def mailRecipients = "mythritest@yahoo.com"
     def jobName = currentBuild.fullDisplayName
 
@@ -80,20 +81,17 @@ node('master')
         to: "${mailRecipients}",
         replyTo: "${mailRecipients}",
         recipientProviders: [[$class: 'CulpritsRecipientProvider']]
+    }
 }
-}
-
+stage('Send email last') {
 pipeline {
     agent any
+    
     post {
         always {
             emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
         }
     }
 }
-
-
-
-
-
+}
 
