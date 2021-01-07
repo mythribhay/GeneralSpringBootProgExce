@@ -63,7 +63,7 @@ node('master')
          } 
     
  stage('Send email') {
-    def mailRecipients = "your_recipients@company.com"
+    def mailRecipients = "Mythribhay@gmail.com"
     def jobName = currentBuild.fullDisplayName
 
     emailext body: '''${SCRIPT, template="groovy-html.template"}''',
