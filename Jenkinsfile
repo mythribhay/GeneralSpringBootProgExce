@@ -4,7 +4,7 @@ node('master')
 
     
 
-   stage('Git checkout') 
+   stage('SCM Checkout') 
 
              { 
 
@@ -30,7 +30,7 @@ node('master')
 
    
 
-   stage("Quality Gate check") 
+   stage("QG Check") 
 
          { 
 
@@ -54,7 +54,7 @@ node('master')
 
     
 
-      stage('Deploy') 
+      stage('SIT – Deployment Approval') 
 
         { 
 
@@ -64,7 +64,7 @@ node('master')
 
  
 
-   stage('Release') 
+   stage('SIT Deployment') 
 
         { 
 
