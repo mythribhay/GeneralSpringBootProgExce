@@ -56,6 +56,10 @@ node('master')
 stage('Deploy approval'){
     input "Deploy to prod?"
 }
+
+node('master') 
+
+{ 
     
 
       stage('SIT – Deployment Approval') 
@@ -77,7 +81,7 @@ stage('Deploy approval'){
         replyTo: "${mailRecipients}",
         recipientProviders: [[$class: 'CulpritsRecipientProvider']]
 }
-    
+}
 
 
 
