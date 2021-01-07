@@ -67,3 +67,4 @@ node('master')
 
 stage('Deploy approval'){
     input "Deploy to prod?"
+}
