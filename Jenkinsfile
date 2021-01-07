@@ -62,30 +62,18 @@ node('master')
 
          } 
     
- stages {
-        stage('Send Email') {
-            steps {
-            node ('master'){
-                echo 'Send Email'
-            }
-        }
-        }
-    }
-    post { 
-        always { 
-            echo 'I will always say Hello!'
-        }
-        aborted {
-            echo 'I was aborted'
-        }
-        failure {
-            mail to: 'aa@bb.cc',
-            subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-            body: "Something is wrong with ${env.BUILD_URL}"
-        }
-  
+ stage('Send email') {
+    def mailRecipients = "your_recipients@company.com"
+    def jobName = currentBuild.fullDisplayName
 
-} 
+    emailext body: '''${SCRIPT, template="groovy-html.template"}''',
+        mimeType: 'text/html',
+        subject: "[Jenkins] ${jobName}",
+        to: "${mailRecipients}",
+        replyTo: "${mailRecipients}",
+        recipientProviders: [[$class: 'CulpritsRecipientProvider']]
+}
+    
 }
 
 stage('Deploy approval'){
