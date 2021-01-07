@@ -60,7 +60,13 @@ node('master')
 
              sh '/opt/maven/bin/mvn clean deploy -DaltDeploymentRepository=internal.repo::default::http://admin:admin123@18.222.187.3:8081/nexus/content/repositories/snapshots/' 
 
-         }     
+         } 
+    
+    post {
+        always {
+            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+        }
+    }
   
 
 } 
@@ -69,8 +75,5 @@ stage('Deploy approval'){
     input "Deploy to prod?"
 }
 
-post {
-        always {
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
-        }
-    }
+
+
