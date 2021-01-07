@@ -51,7 +51,11 @@ node('master')
                   } 
 
          } 
+}
 
+stage('Deploy approval'){
+    input "Deploy to prod?"
+}
     
 
       stage('SIT – Deployment Approval') 
@@ -74,11 +78,9 @@ node('master')
         recipientProviders: [[$class: 'CulpritsRecipientProvider']]
 }
     
-}
 
-stage('Deploy approval'){
-    input "Deploy to prod?"
-}
+
+
 
 
 
